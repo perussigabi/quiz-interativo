@@ -1,12 +1,15 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Interativo</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="quiz">
@@ -14,9 +17,44 @@
         <h1>Quiz de Desenvolvimento</h1>
         <p class="descricao">Teste seus conhecimentos!</p>
 
-        <div id="progresso"></div>
+        <!-- TELA INICIAL -->
+        <div id="telaInicial">
 
-        <div id="areaPergunta">
+            <h2>Configure seu desafio</h2>
+
+            <label for="categoria">Escolha uma categoria:</label>
+
+            <select id="categoria">
+                <option value="todas">Todas as categorias</option>
+                <option value="HTML e CSS">HTML e CSS</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Banco de Dados">Banco de Dados</option>
+            </select>
+
+            <label for="dificuldade">Escolha a dificuldade:</label>
+
+            <select id="dificuldade">
+                <option value="todas">Todas as dificuldades</option>
+                <option value="fácil">Fácil</option>
+                <option value="médio">Médio</option>
+                <option value="difícil">Difícil</option>
+            </select>
+
+            <button onclick="iniciarQuiz()">Começar quiz</button>
+
+        </div>
+
+        <!-- TELA DAS PERGUNTAS -->
+        <div id="areaPergunta" style="display: none;">
+
+            <div id="progresso"></div>
+
+            <div id="categoriaAtual"></div>
+
+            <div id="temporizador">
+                Tempo restante: <span id="tempo">15</span>s
+            </div>
+
             <h2 id="pergunta"></h2>
 
             <div id="alternativas"></div>
@@ -26,20 +64,29 @@
             <button id="btnProxima" onclick="proximaPergunta()" disabled>
                 Próxima pergunta
             </button>
+
         </div>
 
+        <!-- TELA FINAL -->
         <div id="telaFinal" style="display: none;">
+
             <h2>Quiz finalizado!</h2>
+
             <p id="pontuacaoFinal"></p>
+
+            <p id="porcentagem"></p>
+
             <p id="mensagemFinal"></p>
 
-            <button onclick="reiniciarQuiz()">
-                Reiniciar quiz
+            <button onclick="voltarInicio()">
+                Jogar novamente
             </button>
+
         </div>
 
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
